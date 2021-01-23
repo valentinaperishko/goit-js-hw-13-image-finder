@@ -14,7 +14,7 @@
     "url": "git+https://github.com/valentinaperishko/goit-js-hw-13-image-finder.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Valentina Perishko <valentina.perishko@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/valentinaperishko/goit-js-hw-13-image-finder/issues"
@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "infinite-scroll": "^4.0.1"
   }
 }

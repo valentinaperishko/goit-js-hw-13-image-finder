@@ -24,13 +24,6 @@ function loadMoreButton() {
 function insertListItems(resultItemCard) {
   const markup = imageTemplate(resultItemCard);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
-  if (fetchImages.page > 2) {
-    window.scrollBy({
-      top: document.documentElement.clientHeight - refs.searchForm.offsetHeight,
-      behavior: 'smooth',
-    });
-  }
-
   if (markup) {
     refs.btnMore.classList.add('visible');
   }
