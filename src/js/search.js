@@ -20,18 +20,20 @@ function loadMoreButton() {
   fetchImages.fetchImages().then(insertListItems);
 }
 
-function insertListItems(resultItemCard) {
-  const markup = imageTemplate(resultItemCard);
+function insertListItems(itemCard) {
+  const markup = imageTemplate(itemCard);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 
-  if (fetchImages.isLastPage || fetchImages.hits < 12) {
+  if (itemCard.length < 12) {
     refs.btnMore.classList.remove('visible');
-  } else if (fetchImages.pageNumber > 2) {
+  } else refs.btnMore.classList.add('visible');
+
+  if (fetchImages.pageNumber > 2) {
     window.scrollBy({
       top: window.innerHeight - 200,
       behavior: 'smooth',
     });
-  } else refs.btnMore.classList.add('visible');
+  }
 }
 
 function clearListItems() {
