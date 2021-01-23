@@ -8,11 +8,14 @@ export default {
     isLastPage: false,
     
       async fetchImages() {
-        const response = await fetch(`${this.BASE_URL}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.apiKey}`);
-        const parseResponse =  await response.json();
-        this.incrementPage();
-        return parseResponse.hits;
-    
+        return fetch(`${this.BASE_URL}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.pageNumber}&per_page=${this.perPage}&key=${this.apiKey}`)
+        .then (response => response.json())
+        .then(data => {
+            this.incrementPage();
+            return data.hits;
+          })
+          .catch(error => console.log(error));
+           
        },
       resetPage() {
         this.pageNumber = 1;
