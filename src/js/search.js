@@ -2,7 +2,6 @@ import fetchImages from './apiService.js';
 import imageTemplate from '../templates/imageTemplate.hbs';
 import refs from './refs.js';
 
-
 refs.searchForm.addEventListener('submit', searchFormSubmit);
 refs.btnMore.addEventListener('click', loadMoreButton);
 
@@ -24,9 +23,15 @@ function loadMoreButton() {
 function insertListItems(resultItemCard) {
   const markup = imageTemplate(resultItemCard);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
-  if (markup) {
-    refs.btnMore.classList.add('visible');
-  }
+
+  if (fetchImages.isLastPage || fetchImages.hits < 12) {
+    refs.btnMore.classList.remove('visible');
+  } else if (fetchImages.pageNumber > 2) {
+    window.scrollBy({
+      top: window.innerHeight - 200,
+      behavior: 'smooth',
+    });
+  } else refs.btnMore.classList.add('visible');
 }
 
 function clearListItems() {
